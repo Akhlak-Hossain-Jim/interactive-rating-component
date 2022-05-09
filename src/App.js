@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import RatingCard from "./Components/RatingCard";
+import ThankCard from "./Components/ThankCard";
+
+import { AppCon } from "./Style";
 
 function App() {
+  const [IsSubmitted, setIsSubmitted] = useState(false);
+  const [Rating, setRating] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppCon>
+      {IsSubmitted ? (
+        <ThankCard rating={Rating} />
+      ) : (
+        <RatingCard setSubmit={setIsSubmitted} rating={Rating} setRating={setRating} />
+      )}
+    </AppCon>
   );
 }
 
